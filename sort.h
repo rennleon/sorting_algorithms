@@ -25,4 +25,7 @@ void print_list(const listint_t *list);
 /* Sorting functions */
 void selection_sort(int *array, size_t size);
 
+/* Utils */
+void swap(int *arr, int i, int j);
+
 #endif /* SORT_H */
