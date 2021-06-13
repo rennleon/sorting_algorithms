@@ -24,7 +24,7 @@ void swap(int *arr, int i, int j)
 */
 void quick_sort(int *array, size_t size)
 {
-	if (array == NULL || size == 0)
+	if (array == NULL || size <= 1)
 		return;
 
 	solve_quick(array, size, 0, size - 1);
