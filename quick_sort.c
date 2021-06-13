@@ -10,8 +10,6 @@ void solve_quick(int *array, size_t size, long lower, long upper);
 */
 void quick_sort(int *array, size_t size)
 {
-	size_t lower, upper, pivot_ind;
-
 	if (array == NULL || size == 0)
 		return;
 
