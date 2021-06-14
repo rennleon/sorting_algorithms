@@ -70,9 +70,9 @@ void merge(int *array, int *arr_buff,
 		arr_buff[i] = array[i];
 
 	printf("Merging...\n");
-	printf("[Left]: ");
+	printf("[left]: ");
 	print_array(&array[lo_left], up_left - lo_left + 1);
-	printf("[Right]: ");
+	printf("[right]: ");
 	print_array(&array[lo_right], up_right - lo_right + 1);
 
 	while (ind_left <= up_left && ind_right <= up_right)
