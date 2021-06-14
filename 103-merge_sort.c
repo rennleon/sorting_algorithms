@@ -19,6 +19,8 @@ void merge_sort(int *array, size_t size)
 		return;
 
 	arr_buff = malloc(sizeof(*arr_buff) * size);
+	if (arr_buff == NULL)
+		return;
 	solve_merge(array, arr_buff, 0, size - 1);
 	free(arr_buff);
 }
