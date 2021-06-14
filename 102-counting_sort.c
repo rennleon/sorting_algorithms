@@ -55,6 +55,7 @@ void counting_sort(int *array, size_t size)
  * setup_counting_array - Creates an array to count the repeated values
  * @array: Array of integers from which to count the repeated values
  * @size: Size of 'array'
+ * @max_num: Maximun number found on 'array'
  *
  * Return: Pointer to an array of integers
 */
