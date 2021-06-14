@@ -35,28 +35,26 @@ void merge_sort(int *array, size_t size)
 void solve_merge(int *array, int *arr_buff,
 	int lower, int upper)
 {
-	int middle, bounds_sum;
+	int middle;
 
 	if (lower >= upper)
 		return;
 
 	/* To ensure that left's size is always less than right's */
-	bounds_sum = lower + upper;
-	middle = bounds_sum / 2;
-	if (bounds_sum % 2 == 0)
-		middle -= 1;
+	middle = (lower + upper - 1) / 2;
 
 	/* Call for left side */
 	solve_merge(array, arr_buff, lower, middle);
 	/* Call for right side */
 	solve_merge(array, arr_buff, middle + 1, upper);
-	/* Merge left and right */
+
 	printf("Merging...\n");
 	printf("[Left]: ");
 	print_array(&array[lower], middle - lower + 1);
 	printf("[Right]: ");
 	print_array(&array[middle + 1], upper - middle);
 
+	/* Merge left and right */
 	merge(array, arr_buff, lower, middle, middle + 1, upper);
 
 	printf("[Done]: ");
@@ -90,7 +88,7 @@ void merge(int *array, int *arr_buff,
 	/* Fill array with ordered values */
 	while (ind_left <= up_left && ind_right <= up_right)
 	{
-		if (arr_buff[ind_left] < arr_buff[ind_right])
+		if (arr_buff[ind_left] <= arr_buff[ind_right])
 			array[ind_arr++] = arr_buff[ind_left++];
 		else
 			array[ind_arr++] = arr_buff[ind_right++];
