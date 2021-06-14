@@ -30,10 +30,10 @@ void cocktail_sort_list(listint_t **list)
 			{
 				swap_nodes(list, curr, curr->next);
 				print_list(*list);
+				end = curr;
 				curr = curr->prev;
 				swapped = 1;
 			}
-			end = curr->next;
 		}
 
 		if (swapped == 0)
@@ -45,10 +45,10 @@ void cocktail_sort_list(listint_t **list)
 			{
 				swap_nodes(list, curr->prev, curr);
 				print_list(*list);
+				start = curr;
 				curr = curr->next;
 				swapped = 1;
 			}
-			start = curr->prev;
 		}
 	}
 }
