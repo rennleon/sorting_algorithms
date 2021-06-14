@@ -21,6 +21,7 @@ void merge_sort(int *array, size_t size)
 	arr_buff = malloc(sizeof(*arr_buff) * size);
 	if (arr_buff == NULL)
 		return;
+
 	solve_merge(array, arr_buff, 0, size - 1);
 	free(arr_buff);
 }
@@ -40,25 +41,11 @@ void solve_merge(int *array, int *arr_buff,
 	if (lower >= upper)
 		return;
 
-	/* To ensure that left's size is always less than right's */
 	middle = (lower + upper - 1) / 2;
 
-	/* Call for left side */
 	solve_merge(array, arr_buff, lower, middle);
-	/* Call for right side */
 	solve_merge(array, arr_buff, middle + 1, upper);
-
-	printf("Merging...\n");
-	printf("[Left]: ");
-	print_array(&array[lower], middle - lower + 1);
-	printf("[Right]: ");
-	print_array(&array[middle + 1], upper - middle);
-
-	/* Merge left and right */
 	merge(array, arr_buff, lower, middle, middle + 1, upper);
-
-	printf("[Done]: ");
-	print_array(&array[lower], upper - lower + 1);
 }
 
 /**
@@ -85,6 +72,12 @@ void merge(int *array, int *arr_buff,
 	for (i = lo_right; i <= up_right; i++)
 		arr_buff[i] = array[i];
 
+	printf("Merging...\n");
+	printf("[Left]: ");
+	print_array(&array[lo_left], up_left - lo_left + 1);
+	printf("[Right]: ");
+	print_array(&array[lo_right], up_right - lo_right + 1);
+
 	/* Fill array with ordered values */
 	while (ind_left <= up_left && ind_right <= up_right)
 	{
@@ -100,4 +93,7 @@ void merge(int *array, int *arr_buff,
 	/* copy remaining values (right) */
 	while (ind_right <= up_right)
 		array[ind_arr++] = arr_buff[ind_right++];
+
+	printf("[Done]: ");
+	print_array(&array[lo_left], up_right - lo_left + 1);
 }
