@@ -1,6 +1,6 @@
 #include "sort.h"
 
-int *setup_counting_array(int *array, size_t size);
+int *setup_counting_array(int *array, size_t size, int max_num);
 
 /**
  * counting_sort - Sorts an array using counting sort algorithm
@@ -20,7 +20,7 @@ void counting_sort(int *array, size_t size)
 		if (array[i] > max_num)
 			max_num = array[i];
 
-	counting_arr = setup_counting_array(array, size);
+	counting_arr = setup_counting_array(array, size, max_num);
 	if (counting_arr == NULL)
 		return;
 
@@ -58,10 +58,10 @@ void counting_sort(int *array, size_t size)
  *
  * Return: Pointer to an array of integers
 */
-int *setup_counting_array(int *array, size_t size)
+int *setup_counting_array(int *array, size_t size, int max_num)
 {
 	size_t i;
-	int *counting_arr, max_num;
+	int *counting_arr;
 
 	/* Create counting array with 'max_num'(included) size*/
 	counting_arr = malloc(sizeof(*array) * (max_num + 1));
