@@ -1,6 +1,5 @@
 #include "sort.h"
 
-
 void solve_merge(int *array, int *arr_buff,
 	int lower, int upper);
 void merge(int *array, int *arr_buff,
@@ -65,10 +64,8 @@ void merge(int *array, int *arr_buff,
 	int ind_left = lo_left;
 	int ind_right = lo_right;
 
-	/* Copy left array values */
 	for (i = lo_left; i <= up_left; i++)
 		arr_buff[i] = array[i];
-	/* Copy right array values */
 	for (i = lo_right; i <= up_right; i++)
 		arr_buff[i] = array[i];
 
@@ -78,7 +75,6 @@ void merge(int *array, int *arr_buff,
 	printf("[Right]: ");
 	print_array(&array[lo_right], up_right - lo_right + 1);
 
-	/* Fill array with ordered values */
 	while (ind_left <= up_left && ind_right <= up_right)
 	{
 		if (arr_buff[ind_left] <= arr_buff[ind_right])
@@ -87,10 +83,8 @@ void merge(int *array, int *arr_buff,
 			array[ind_arr++] = arr_buff[ind_right++];
 	}
 
-	/* copy remaining values (left) */
 	while (ind_left <= up_left)
 		array[ind_arr++] = arr_buff[ind_left++];
-	/* copy remaining values (right) */
 	while (ind_right <= up_right)
 		array[ind_arr++] = arr_buff[ind_right++];
 
