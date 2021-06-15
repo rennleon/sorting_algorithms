@@ -27,30 +27,22 @@ int partition(int *array, size_t size, int left, int right)
 {
 	int l = left, r = right;
 	int pivot = array[right];
-	int pivot_new_ind = -1;
 
 	while (l < r)
 	{
-		while (array[l] <= pivot)
+		while (array[l] <= pivot && l < r)
 			l++;
 		while (array[r] > pivot)
 			r--;
 
 		if (l < r)
 		{
-			if (pivot_new_ind == -1)
-				pivot_new_ind = l;
 			swap(array, l, r);
 			print_array(array, size);
 		}
 	}
 
-	if (pivot_new_ind != -1 && pivot_new_ind < r)
-	{
-		swap(array, pivot_new_ind, r);
-		print_array(array, size);
-	}
-	return (r);
+	return (l);
 }
 
 /**
@@ -69,7 +61,7 @@ void solve_quick(int *array, size_t size, long lower, long upper)
 
 	pivot_pos = partition(array, size, lower, upper);
 	solve_quick(array, size, lower, pivot_pos - 1);
-	solve_quick(array, size, pivot_pos + 1, upper);
+	solve_quick(array, size, pivot_pos, upper);
 }
 
 /**
