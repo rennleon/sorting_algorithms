@@ -69,7 +69,7 @@ void solve_quick(int *array, size_t size, long lower, long upper)
 		return;
 
 	pivot_pos = partition(array, size, lower, upper);
-	solve_quick(array, size, lower, pivot_pos - 1);
+	solve_quick(array, size, lower, pivot_pos);
 	solve_quick(array, size, pivot_pos + 1, upper);
 }
 
