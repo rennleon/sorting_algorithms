@@ -28,19 +28,17 @@ int partition(int *array, size_t size, int left, int right)
 	int l = left - 1, r = right + 1;
 	int pivot = array[right];
 
-	while (l < r)
+	while (1)
 	{
 		while (array[++l] < pivot);
 		while (array[--r] > pivot);
 
-		if (l < r && array[l] != array[r])
-		{
-			swap(array, l, r);
-			print_array(array, size);
-		}
-	}
+		if (l >= r)
+			return (l);
 
-	return (l);
+		swap(array, l, r);
+		print_array(array, size);
+	}
 }
 
 /**
