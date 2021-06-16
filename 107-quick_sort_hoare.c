@@ -25,17 +25,15 @@ void swap(int *arr, int i, int j)
 */
 int partition(int *array, size_t size, int left, int right)
 {
-	int l = left, r = right;
+	int l = left - 1, r = right + 1;
 	int pivot = array[right];
 
 	while (l < r)
 	{
-		while (array[l] <= pivot && l < r)
-			l++;
-		while (array[r] > pivot)
-			r--;
+		while (array[++l] < pivot);
+		while (array[--r] > pivot);
 
-		if (l < r && array[l] > array[r])
+		if (l < r)
 		{
 			swap(array, l, r);
 			print_array(array, size);
