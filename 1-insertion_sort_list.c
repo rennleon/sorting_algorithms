@@ -56,9 +56,14 @@ void insert_node_after(listint_t **list, listint_t *prev_node,
     after_node->next = node;
 }
 
+
+
 void insertion_sort_list(listint_t **list)
 {
     listint_t *ni, *nj;
+
+    if (list == NULL || *list == NULL || (*list)->next== NULL)
+        return;
 
     for (ni = (*list)->next ; ni != NULL; ni = ni->next)
     {
@@ -73,4 +78,3 @@ void insertion_sort_list(listint_t **list)
         }   
     }
 }
-
